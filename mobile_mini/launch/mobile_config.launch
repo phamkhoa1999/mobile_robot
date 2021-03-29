@@ -1,0 +1,25 @@
+ <launch>
+
+   <!-- Arguments -->
+  <arg name="serial_port"     default="/dev/ttyAMA0"/>
+
+  <!--Main-->
+  <include file="$(find mobile_mini)/include/rplidar.launch" /> 
+
+  <include file="$(find mobile_mini)/include/my_laser_filter.launch"/>
+
+  <node name="odometry" pkg="mobile_mini" type="odom_node.py"/> 
+
+  <include file="$(find mobile_mini)/include/serial_node.launch"/>
+
+  <!--node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args=" 0.11 0 0.14 0 0 0 base_link laser 100" /-->
+
+<node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args=" 0.19 0 0.23 0 0 0 base_link laser 100" />
+
+<!--node pkg="tf" type="static_transform_publisher" name="lwheel_broadcaster" args=" 0 0 -0.17 0 0 0 base_link left_wheel 100" /-->
+
+<!--node pkg="tf" type="static_transform_publisher" name="rwheel_broadcaster" args=" 0 0 0.17 0 0 0 base_link right_wheel 100" /-->
+
+  <!--node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="-0.05 0 0 0 0 0  base_link base_footprint 100" /-->
+
+</launch> 

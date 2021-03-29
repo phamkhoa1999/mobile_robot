@@ -1,0 +1,11 @@
+<!--
+launch file to auto run mobile robot
+ -->
+
+<launch>
+
+  <node pkg = "turtlesim" type = "turtle_teleop_key" name ="turtle1"/>
+		
+  <node pkg = "mobile_mini" type = "converter.py" name ="converter"/>
+		
+</launch>
